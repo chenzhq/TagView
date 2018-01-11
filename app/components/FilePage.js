@@ -4,6 +4,7 @@ import { Row, Col, Mention } from 'antd';
 import TagSelect from '../containers/TagSelect';
 import FilterTabel from '../containers/FilterTable';
 import ChooseFileTypeModal from './ChooseFileTypeModal';
+import DialogDemo from './DialogDemo';
 
 const { toString, toContentState } = Mention;
 const onChange = contentState => {
@@ -20,6 +21,9 @@ const HeaderSearchBar = () => (
     </Row>
     <Row>
       <FilterTabel />
+    </Row>
+    <Row>
+      <DialogDemo />
     </Row>
   </div>
 );

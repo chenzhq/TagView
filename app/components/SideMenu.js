@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 import { Menu, Icon, Modal } from 'antd';
+import Dialog, { DialogTitle } from 'material-ui/Dialog';
+import Avatar from 'material-ui/Avatar';
+import List, { ListItem, ListItemAvatar, ListItemText } from 'material-ui/List';
 // import ChooseFileTypeModal from './ChooseFileTypeModal';
 
 const { dialog } = require('electron').remote;
@@ -9,6 +12,7 @@ const { SubMenu } = Menu;
 type Props = {};
 type State = {
   fileTypeModalVisible: boolean,
+  open: boolean,
 };
 
 const openFileDialog = () => {
@@ -36,16 +40,19 @@ const openFileDialog = () => {
     }
   );
 }; */
+const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 class SideMenu extends React.Component<Props, State> {
   // modal;
   state = {
     fileTypeModalVisible: false,
+    open: false,
   };
 
   openDirDialog = () => {
     this.setState({
       fileTypeModalVisible: true,
+      // open: true,
     });
 
     // dialog.showOpenDialog(
@@ -71,6 +78,12 @@ class SideMenu extends React.Component<Props, State> {
     this.setState({
       fileTypeModalVisible: false,
     });
+  };
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+  handleListItemClick = () => {
+    this.setState({ open: false });
   };
 
   render() {
@@ -140,6 +153,13 @@ class SideMenu extends React.Component<Props, State> {
           <p>Some contents...</p>
           <p>Some contents...</p>
         </Modal>
+        <Dialog
+          onClose={this.handleClose}
+          aria-labelledby="simple-dialog-title"
+          open={this.state.open}
+        >
+          <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+        </Dialog>
       </div>
     );
   }
